@@ -53,13 +53,13 @@ jobs:
               echo "- Success rate: ${RATE}%" >> "$GITHUB_STEP_SUMMARY"
               if [ "$RATE" -lt 95 ]; then
                 echo "::error::Success rate ${RATE}% is below the 95% threshold (${PASS}/${TOTAL} passed)"
-                exit 1
+                exit 2
               fi
             else
               echo "- No tests found in results.json" >> "$GITHUB_STEP_SUMMARY"
-              exit 1
+              exit 2
             fi
           else
             echo "- results.json not found" >> "$GITHUB_STEP_SUMMARY"
-            exit 1
+            exit 2
           fi
